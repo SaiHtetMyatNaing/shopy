@@ -1,12 +1,11 @@
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import React from 'react'
 
 function NavBar() {
   return (
     // main Top Nav Bar Wrapper for every Page
-     <nav className='p-4 gap-3 flex justify-between z-20 bg-white items-center max-w-full w-full top-0 left-0 fixed right-0 shadow-lg'>
+     <nav className='p-4 gap-3 flex justify-between z-20 bg-white items-center max-w-full w-full top-0 left-0 fixed right-0 shadow-md'>
 
         <div className='pl-7'>
             <h1 className='font-bold text-2xl transform -skew-y-[5deg]'>Shopy</h1>

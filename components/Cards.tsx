@@ -2,12 +2,13 @@ import titleLimitation, { descriptionLimitation } from '@/app/helper/helper'
 import { Product } from '@/app/products/page'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import Image from 'next/image'
+import { Button } from './ui/button'
 
 
 
 const Cards = ({id , title , description , image , price , category} : Product ) => {
   return (
-    <Card className='max-w-sm col-span-4'>
+    <Card className='max-w-sm col-span-4 shadow-md'>
 
          <CardHeader>
              <CardDescription>{titleLimitation(title)}</CardDescription>
@@ -22,10 +23,14 @@ const Cards = ({id , title , description , image , price , category} : Product )
              height={300}></Image>
         </CardContent>
 
-        <CardFooter>
-          <p
-           className='text-sm'
-           >{descriptionLimitation(description)}...<span className='text-gary-400 cursor-pointer hover:font-semibold'>Read More</span></p>
+        <CardFooter className='flex flex-col'>
+          <p className='text-sm'>
+          {descriptionLimitation(description)}...<span className='text-gary-400 cursor-pointer hover:font-semibold'>Read More</span></p>
+          
+           <div className='w-full flex items-center justify-between mt-4 px-2 py-2'>
+               <span className='font-bold text-2xl -skew-x-6'>${price}</span>
+              <Button className='w-28'>Buy</Button>
+           </div>
         </CardFooter>
 
     </Card>
