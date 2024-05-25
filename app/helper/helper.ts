@@ -10,3 +10,5 @@ export  function descriptionLimitation(str : string) : string{
     return str.slice(0 , 120 )
 }
 
+
+

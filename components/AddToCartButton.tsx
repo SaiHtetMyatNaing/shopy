@@ -1,15 +1,25 @@
 import React from 'react'
 import { Button } from './ui/button'
-import { useAddToCartStore } from '@/app/Zustandstore/store'
+import { useAddToCartStore, useItemStore } from '@/app/Zustandstore/store'
+import { Product } from '@/app/products/page'
 
-const AddToCartButton = () => {
-    const setItemCount = useAddToCartStore((state) => state.setItemCount)
-    const itemCount    = useAddToCartStore((state) => state.itemCount)
+const AddToCartButton = ({id , title , price , description , category , image} : Product) => {
+    const { productCount ,setProductCount } =useItemStore()
+    const {setItemCount , itemCount} = useAddToCartStore()
+
+    const filteredData = productCount.filter((value, index, self)  =>{
+      return index === self.findIndex((t) => (t.id === value.id)) 
+     })
+ 
+
 
   return (
     <Button
     className='w-28'
-    onClick={()=> setItemCount(itemCount + 1)}>
+    onClick={()=>{
+      setItemCount(itemCount + 1)
+      setProductCount({id , title , price , description , category ,image})}
+    }>
         Buy
     </Button>
   )

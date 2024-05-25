@@ -1,12 +1,14 @@
 'use client'
 import { useAddToCartStore } from "@/app/Zustandstore/store";
+import Link from "next/link";
 import React from "react";
 
 function AddToCart() {
     const itemCount = useAddToCartStore((state) => state.itemCount);
 
   return (
-     <button className="relative max-w-14 max-h-14">
+    <Link href="/my-cart">
+     <button  className="relative max-w-14 max-h-14">
       <span className="absolute -top-2 -right-[8px] bg-black text-white rounded-full w-[20px] h-[20px] text-sm text-center">{itemCount}</span>
       <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -26,6 +28,7 @@ function AddToCart() {
       <path d="M6 5l14 1-1 7H6"></path>
     </svg>
     </button>
+    </Link>
   );
 }
 

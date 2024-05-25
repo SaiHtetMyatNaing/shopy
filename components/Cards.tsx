@@ -34,7 +34,13 @@ const Cards = ({id , title , description , image , price , category} : Product )
           
            <div className='w-full flex items-center justify-between mt-4 px-2 py-2'>
                <span className='font-bold text-2xl -skew-x-6'>${price}</span>
-              <AddToCartButton/>
+              <AddToCartButton 
+              id={id}
+              title ={title} 
+              category ={category}
+              description={description} 
+              image ={image} 
+              price={price} />
            </div>
         </CardFooter>
 
