@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import React from 'react'
+import AddToCart from './AddToCart'
 
 function NavBar() {
   return (
@@ -23,7 +24,9 @@ function NavBar() {
             </li>
         </ul>
 
-        <div className='flex justify-between items-center  w-[180px]'>
+       
+        <div className='flex justify-between items-center gap-4 max-w-[220px]'>
+             <AddToCart/>
             <Button>Sign In</Button>
             <Button variant="outline" className='border-black'>Sign Up</Button>
         </div>

@@ -10,7 +10,7 @@ const Home = () => {
         text: "Your",
       },
       {
-        text: "Happiness",
+        text: "Happiness,",
       },
       {
         text: "Our",

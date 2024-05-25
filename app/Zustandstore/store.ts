@@ -12,14 +12,16 @@ export const useFilterStore = create<FilterStore>((set)=>({
       }
 }))
 
-type LoadingStore = {
-     loading : boolean ,
-     setLoading : (str : boolean) => void,
+
+
+type AddToCartStore = {
+     itemCount : number,
+     setItemCount : (val : number ) => void,
 }
 
-export const useLoadingStore = create<LoadingStore>((set)=>({
-     loading : false,
-     setLoading : (str : boolean) => {
-       set({loading : true});
-     }
+export const useAddToCartStore = create<AddToCartStore>((set)=>({
+      itemCount : 0 ,
+      setItemCount :(val : number) => {
+         set({itemCount : val})
+      }
 }))

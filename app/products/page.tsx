@@ -2,7 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import Cards from '@/components/Cards';
-import { useFilterStore, useLoadingStore } from '../Zustandstore/store';
+import { useFilterStore} from '../Zustandstore/store';
 import SideBarFilter from '@/components/SideBarFilter';
 import { Suspense } from 'react';
 
@@ -21,8 +21,6 @@ const Page = () => {
    const setFilteredItem = useFilterStore((state)=> state.setFilteredItem)
    const filterItem    = useFilterStore((state)=> state.filteredItem)
 
-
-
    const {data , isLoading} = useQuery({
         queryKey : ['Products'],
         queryFn : () => 
@@ -30,6 +28,7 @@ const Page = () => {
             .then((res)=> res.json())    
     })
 
+   if(isLoading) return <div className='loader fixed top-[400px] left-[650px]'></div>
   
   return (
     // Main wrapper contains 2 children home and aside
