@@ -1,12 +1,10 @@
 'use client'
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { useQuery } from '@tanstack/react-query';
 import Cards from '@/components/Cards';
-import { useFilterStore } from '../Zustandstore/store';
-import FilterCategoryIcon from '../Icons/FilterCategoryIcon';
-import { SearchIcon } from 'lucide-react';
+import { useFilterStore, useLoadingStore } from '../Zustandstore/store';
 import SideBarFilter from '@/components/SideBarFilter';
+import { Suspense } from 'react';
 
 
 export type Product = {
@@ -25,13 +23,11 @@ const Page = () => {
 
 
 
-
-    
-    const {data} = useQuery({
+   const {data , isLoading} = useQuery({
         queryKey : ['Products'],
         queryFn : () => 
             fetch(`https://fakestoreapi.com/products`)
-            .then((res)=> res.json())     
+            .then((res)=> res.json())    
     })
 
   
@@ -39,28 +35,32 @@ const Page = () => {
     // Main wrapper contains 2 children home and aside
     <div className="mt-20 px-4 max-w-full py-4 w-full grid grid-cols-12 gap-2"> 
    
-
+    <Suspense fallback={<div className='loader'></div>}>
     {/* first child with sub 12 cols again, each card with 4 col span */}
     <div className='grid col-span-10 grid-cols-12 gap-2'>
 
        { 
           filterItem.length > 0 ?
           data && data.filter((item : Product )  => 
-          
+            
            item.category.toLowerCase().includes(filterItem.toLowerCase()) ||
            item.title.toLowerCase().includes(filterItem.toLowerCase()) ||
            item.description.toLowerCase().includes(filterItem.toLowerCase())).map((item : Product)=> {
-             return (<Cards 
+             return (
+           
+             <Cards 
              key={item.id}
              id={item.id}
              title={item.title}
              category={item.category}
              price={item.price}
              image={item.image}
-             description={item.description} />)
+             description={item.description} 
+             />)
           }) : 
           data && data.map((item : Product)=> {
-            return (<Cards 
+            return (
+            <Cards 
             key={item.id}
             id={item.id}
             title={item.title}
@@ -71,6 +71,7 @@ const Page = () => {
          })
        }
     </div>
+    </Suspense>
     {/* 2nd child aside with 2 col span for filtering the products */}
     <aside className='col-span-2'>
         <SideBarFilter/>

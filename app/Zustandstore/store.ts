@@ -11,3 +11,15 @@ export const useFilterStore = create<FilterStore>((set)=>({
         set({filteredItem : str })
       }
 }))
+
+type LoadingStore = {
+     loading : boolean ,
+     setLoading : (str : boolean) => void,
+}
+
+export const useLoadingStore = create<LoadingStore>((set)=>({
+     loading : false,
+     setLoading : (str : boolean) => {
+       set({loading : true});
+     }
+}))
