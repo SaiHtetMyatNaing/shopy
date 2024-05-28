@@ -15,34 +15,39 @@ export const useFilterStore = create<FilterStore>((set)=>({
 
 type AddToCartStore = {
      itemCount : number,
-     setItemCount : (val : number) => void,
+     setItemCount : (val : number) => any,
 }
 
 export const useAddToCartStore = create<AddToCartStore>((set)=>({
       itemCount : 0 ,
-      setItemCount :(val :number) => {
+      setItemCount :(val :number)  => {
          set({itemCount : val})
       }
 }))
 
+
+//For Add To Cart Page
 type ItemStore = {
-      finalProductCount : Object[],
       productCount : Object[] , 
       setProductCount : (val : Product)=> void,
-      setFinalProductCount : (val : Product) => void,
 }
+
+
 
 // Fot Add To Cart Page 
 export const useItemStore = create<ItemStore> ((set)=>({
       productCount : [] ,
-      finalProductCount : [],
       setProductCount : ( val : Product)=>{
-            set((state) => ({productCount : [...state.productCount , val]}))
+         set((state) => (
+            {productCount : 
+            [...state.productCount,val].filter((value, index, self)=>{
+            index === self.findIndex((t) => (t.id === value.id))} )}))
       },
-      setFinalProductCount : (val : any)=> {
-            set({finalProductCount : val})
-      } 
+  
 }))
+
+
+ 
 
 
 

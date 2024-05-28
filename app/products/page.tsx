@@ -1,5 +1,4 @@
 'use client'
-
 import { useQuery } from '@tanstack/react-query';
 import Cards from '@/components/Cards';
 import { useFilterStore} from '../Zustandstore/store';

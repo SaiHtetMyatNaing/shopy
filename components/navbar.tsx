@@ -27,7 +27,7 @@ function NavBar() {
        
         <div className='flex justify-between items-center gap-4 max-w-[220px]'>
              <AddToCart/>
-            <Button>Sign In</Button>
+            <Button><Link href='/api/auth/signin'>Sign In</Link></Button>
             <Button variant="outline" className='border-black'>Sign Up</Button>
         </div>
 

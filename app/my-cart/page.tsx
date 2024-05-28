@@ -6,15 +6,9 @@ import { Product } from '../products/page'
 
 const Page = () => {
 
-    const { productCount  , setProductCount} = useItemStore();
-    const {setItemCount , itemCount} = useAddToCartStore()
+    const { productCount  , setProductCount } = useItemStore();
+    const { itemCount} = useAddToCartStore()
 
-    // I don't know how to write this one in typescript and move to helper function
-    const filteredData = productCount.filter((value, index, self)  =>{
-     return index === self.findIndex((t) => (t.id === value.id)) 
-    })
-
-    
   return (
     <main className='grid grid-cols-12 mt-24 px-10'>
 
@@ -26,7 +20,7 @@ const Page = () => {
             </div>
            
             {
-                productCount.length > 0 && productCount && filteredData.map((item)=> {     
+               productCount.length > 0 && productCount && productCount.map((item)=> {     
                     return (
                 <div key={item.id} className='col-span-full justify-between flex items-center p-3'>
                   <div className='max-w-md h-32 object-contain overflow-hidden'>
@@ -53,7 +47,8 @@ const Page = () => {
                      <p>${item.price}</p>
                   </div>
 
-                  <button className='font-2xl text-gray-400 hover:text-red-500'> x </button>
+                  <button 
+                  className='font-2xl text-gray-400 hover:text-red-500'> x </button>
             </div>
                     )
                 })

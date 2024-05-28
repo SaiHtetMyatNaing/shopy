@@ -4,12 +4,12 @@ import { useAddToCartStore, useItemStore } from '@/app/Zustandstore/store'
 import { Product } from '@/app/products/page'
 
 const AddToCartButton = ({id , title , price , description , category , image} : Product) => {
-    const { productCount ,setProductCount } =useItemStore()
+    const { productCount ,setProductCount  } =useItemStore()
     const {setItemCount , itemCount} = useAddToCartStore()
 
-    const filteredData = productCount.filter((value, index, self)  =>{
-      return index === self.findIndex((t) => (t.id === value.id)) 
-     })
+    // const filteredData = productCount.filter((value, index, self)  =>{
+    //   return index === self.findIndex((t) => (t.id === value.id)) 
+    //  })
  
 
 
@@ -17,7 +17,7 @@ const AddToCartButton = ({id , title , price , description , category , image} :
     <Button
     className='w-28'
     onClick={()=>{
-      setItemCount(itemCount + 1)
+      setItemCount(productCount.length)
       setProductCount({id , title , price , description , category ,image})}
     }>
         Buy
