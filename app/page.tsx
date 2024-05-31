@@ -3,7 +3,9 @@ import { Button } from "@/components/ui/button";
 import UndrawIcon from "@/public/undraw";
 import Image from "next/image";
 
-const Home = () => {
+
+const Home =  () => {
+  
 
     const words = [
       {
